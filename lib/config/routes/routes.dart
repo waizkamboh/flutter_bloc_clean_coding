@@ -1,9 +1,6 @@
-
-
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc_clean_coding/config/routes/routes_name.dart';
-import 'package:flutter_bloc_clean_coding/views/splash/splash_screen.dart';
+import '../../views/view.dart';
 
 class Routes {
 
@@ -11,6 +8,10 @@ class Routes {
     switch (setting.name) {
       case RoutesName.splashScreen:
         return MaterialPageRoute(builder: (context)=> SplashScreen());
+      case RoutesName.loginScreen:
+        return MaterialPageRoute(builder: (context)=> LoginScreen());
+      case RoutesName.homeScreen:
+        return MaterialPageRoute(builder: (context)=> HomeScreen());
 
       default:
         return MaterialPageRoute(builder: (context){
