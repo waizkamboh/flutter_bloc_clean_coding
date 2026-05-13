@@ -1,56 +1,55 @@
-/// Base class for custom application exceptions.
-class AppException implements Exception {
-  final _message; // Message associated with the exception
-  final _prefix; // Prefix for the exception
 
-  /// Constructor for creating an [AppException] instance.
-  ///
-  /// The [message] parameter represents the message associated with the exception,
-  /// and the [prefix] parameter represents the prefix for the exception.
-  AppException([this._message, this._prefix]);
+class AppExceptions implements Exception{
 
-  @override
-  String toString() {
-    return '$_message$_prefix'; // Returns the formatted error message
+  final _message ;
+  final _prefix ;
+
+  AppExceptions([this._message, this._prefix]);
+
+  String toString(){
+    return '$_prefix$_message';
   }
+
+
 }
 
-/// Exception class representing a fetch data error during communication.
-class FetchDataException extends AppException {
-  /// Constructor for creating a [FetchDataException] instance.
-  ///
-  /// The [message] parameter represents the error message.
-  FetchDataException([String? message]) : super(message, 'Error During Communication');
+class InternetException extends AppExceptions{
+
+  InternetException([String? message]) : super(message, 'Unable to connect to server. Please check your internet connection.');
+
 }
 
-/// Exception class representing a bad request error.
-class BadRequestException extends AppException {
-  /// Constructor for creating a [BadRequestException] instance.
-  ///
-  /// The [message] parameter represents the error message.
-  BadRequestException([String? message]) : super(message, 'Invalid request');
+class RequestTimeOut extends AppExceptions{
+
+  RequestTimeOut([String? message]) : super(message, 'Request Time Out');
+
 }
 
-/// Exception class representing an unauthorized request error.
-class UnauthorisedException extends AppException {
-  /// Constructor for creating an [UnauthorisedException] instance.
-  ///
-  /// The [message] parameter represents the error message.
-  UnauthorisedException([String? message]) : super(message, 'Unauthorised request');
+class ServerException extends AppExceptions{
+
+  ServerException([String? message]) : super(message, 'Internal Server Error');
+
 }
 
-/// Exception class representing an invalid input error.
-class InvalidInputException extends AppException {
-  /// Constructor for creating an [InvalidInputException] instance.
-  ///
-  /// The [message] parameter represents the error message.
-  InvalidInputException([String? message]) : super(message, 'Invalid Input');
+class InvalidUrlException extends AppExceptions{
+
+  InvalidUrlException([String? message]) : super(message, '');
+
 }
 
-/// Exception class representing a no internet connection error.
-class NoInternetException extends AppException {
-  /// Constructor for creating a [NoInternetException] instance.
-  ///
-  /// The [message] parameter represents the error message.
-  NoInternetException([String? message]) : super(message, 'No Internet Connection');
+class FetchDataException extends AppExceptions{
+
+  FetchDataException([String? message]) : super(message, '');
+
+
 }
+
+
+
+
+
+
+
+
+
+
